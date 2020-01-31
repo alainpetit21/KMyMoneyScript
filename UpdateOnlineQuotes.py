@@ -25,7 +25,7 @@ def main():
         except:
             str_price = "0.00"
 
-    time.sleep(2)
+    time.sleep(5)
 
     print(str_price)
 
