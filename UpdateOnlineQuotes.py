@@ -12,20 +12,24 @@ def main():
         print("Wrong format. Include a quote ID")
 
     str_price= ""
+    was_completed = False
 
-    try:
-        ts = TimeSeries(key=config.mAPIKey, output_format='pandas')
-        data, meta_data = ts.get_daily(symbol=sys.argv[1],outputsize='compact')
-        str_price = data['4. close'][0]
-    except:
+    while not was_completed:
         try:
             ts = TimeSeries(key=config.mAPIKey, output_format='pandas')
-            data, meta_data = ts.get_intraday(symbol=sys.argv[1], outputsize='compact')
+            data, meta_data = ts.get_daily(symbol=sys.argv[1],outputsize='compact')
             str_price = data['4. close'][0]
+            was_completed = True
         except:
-            str_price = "0.00"
-
-    time.sleep(5)
+            try:
+                ts = TimeSeries(key=config.mAPIKey, output_format='pandas')
+                data, meta_data = ts.get_intraday(symbol=sys.argv[1], outputsize='compact')
+                str_price = data['4. close'][0]
+                was_completed = True
+            except:
+                # Probably exceeded the API limit of 5 calls per minutes try again, recursively
+                str_price = "0.00"
+                time.sleep(60)
 
     print(str_price)
 
