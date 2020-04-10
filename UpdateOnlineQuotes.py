@@ -10,6 +10,7 @@ from config import config
 def main():
     if len(sys.argv) < 2:
         print("Wrong format. Include a quote ID")
+        return
 
     str_price= ""
     was_completed = False
