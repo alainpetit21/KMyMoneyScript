@@ -46,7 +46,10 @@ def apiYahooFinance(strQuote):
     try:
         url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes"
 
-        querystring = {"region": "US", "lang": "en", "symbols": strQuote}
+        if(strQuote[-3:] == ".TO"):
+            querystring = {"region": "CA", "lang": "en", "symbols": strQuote}
+        else:
+            querystring = {"region": "US", "lang": "en", "symbols": strQuote}
 
         headers = {
             'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com",

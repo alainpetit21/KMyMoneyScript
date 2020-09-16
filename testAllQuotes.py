@@ -31,5 +31,8 @@ def main():
     print("XEC: ")
     os.system('python3 ./UpdateOnlineQuotes.py ' + "XEC.TO")
 
+    print("QBTC.U: ")
+    os.system('python3 ./UpdateOnlineQuotes.py ' + "QBTC-U.TO")
+
 if __name__ == "__main__":
     main()
