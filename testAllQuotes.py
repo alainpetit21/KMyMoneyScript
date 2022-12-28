@@ -1,5 +1,6 @@
 import os
 
+
 def main():
     print("0P000072TQ: ")
     os.system('python3 ./UpdateOnlineQuotes.py ' + "0P000072TQ")
@@ -33,6 +34,7 @@ def main():
 
     print("QBTC.U: ")
     os.system('python3 ./UpdateOnlineQuotes.py ' + "QBTC-U.TO")
+
 
 if __name__ == "__main__":
     main()
